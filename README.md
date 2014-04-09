@@ -32,7 +32,7 @@ app.use(grid({ server: server, path: '/api' }));
 
 ### connection(id)
 
-Emitted, when client connects to grid with websockets and recievs id.
+Emitted, when client connects to grid with websockets and recieves id.
 
 ### disconnect(id)
 

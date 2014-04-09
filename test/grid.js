@@ -8,9 +8,9 @@ var protocol = require('../lib/protocol.js');
 
 require('should');
 
-describe('server', function () {
+describe('grid', function () {
     beforeEach(function (done) {
-        this.grid = require('..')({port: port}, done);
+        this.grid = require('..')({port: ++port}, done);
     });
 
     afterEach(function () {

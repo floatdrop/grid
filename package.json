@@ -32,7 +32,6 @@
   },
   "homepage": "https://github.com/floatdrop/grid",
   "dependencies": {
-    "async": "^0.7.0",
     "body-parser": "^1.0.1",
     "cors": "^2.2.0",
     "express": "^4.0.0-rc4",
