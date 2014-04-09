@@ -1,0 +1,33 @@
+{
+  "name": "grid",
+  "version": "0.0.0",
+  "description": "Server for distributed networking with WebRTC",
+  "keywords": [
+    "WebRTC",
+    "distributed",
+    "networking"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+  },
+  "devDependencies": {
+    "mocha": "^1.17.0",
+    "mocha-lcov-reporter": "^0.0.1",
+    "coveralls": "^2.7.0",
+    "istanbul": "^0.2.3",
+    "should": "^3.1.0",
+    "jshint": "^2.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/floatdrop/grid.git"
+  },
+  "author": "Vsevolod Strukchinsky <floatdrop@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/floatdrop/grid/issues"
+  },
+  "homepage": "https://github.com/floatdrop/grid"
+}
