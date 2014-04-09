@@ -23,6 +23,7 @@ function createGridServer(options, callback) {
     mixin(app.options, options);
 
     app._clients = {};
+    app._sockets = {};
     app._server = app.options.server;
 
     if (!app._server && app.options.port) {
