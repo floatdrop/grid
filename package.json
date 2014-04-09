@@ -29,5 +29,11 @@
   "bugs": {
     "url": "https://github.com/floatdrop/grid/issues"
   },
-  "homepage": "https://github.com/floatdrop/grid"
+  "homepage": "https://github.com/floatdrop/grid",
+  "dependencies": {
+    "body-parser": "^1.0.1",
+    "express": "^4.0.0-rc4",
+    "node-uuid": "^1.4.1",
+    "utils-merge": "^1.0.0"
+  }
 }
