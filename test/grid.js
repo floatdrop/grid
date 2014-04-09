@@ -23,7 +23,7 @@ describe('server', function () {
 
     it('should emit connection when user connects to websocket server', function (done) {
         this.grid.on('connection', function () { done(); });
-        var ws = new WS('ws://localhost:' + port);
+        new WS('ws://localhost:' + port);
     });
 
     it('should emit disconnect when user closes websocket connection', function (done) {
