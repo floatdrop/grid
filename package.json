@@ -32,8 +32,10 @@
   "homepage": "https://github.com/floatdrop/grid",
   "dependencies": {
     "body-parser": "^1.0.1",
+    "cors": "^2.2.0",
     "express": "^4.0.0-rc4",
     "node-uuid": "^1.4.1",
-    "utils-merge": "^1.0.0"
+    "utils-merge": "^1.0.0",
+    "ws": "^0.4.31"
   }
 }
