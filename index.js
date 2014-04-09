@@ -27,7 +27,8 @@ function createGridServer(options, callback) {
 
     if (!app._server && app.options.port) {
         app._server = http.createServer(app);
-        app._server.listen(app.options.port, app.options.host, callback);
+        app._server.on('listening', callback);
+        app._server.listen(app.options.port, app.options.host);
     }
 
     if (!app._server) {
