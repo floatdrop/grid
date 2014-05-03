@@ -69,17 +69,19 @@ describe('grid', function () {
         });
     });
 
-    it('should transmit messages to other client', function (done) {
+    it('should transmit messages to other client and provide src', function (done) {
         var ws = new WS('ws://localhost:' + port);
         ws.on('message', function (data) {
             var json = JSON.parse(data);
             if (json.type === protocol.WELCOME) {
+                var firstId = json.id;
                 var ws2 = new WS('ws://localhost:' + port);
                 ws2.on('message', function (data) {
                     var json = JSON.parse(data);
                     if (json.type === protocol.WELCOME) {
                         ws.send(JSON.stringify({ dst: json.id, payload: 'Hello!' }));
                     } else if (json.payload) {
+                        json.src.should.eql(firstId);
                         json.payload.should.eql('Hello!');
                         done();
                     }  else {
