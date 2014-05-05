@@ -1,5 +1,5 @@
 # Grid
-[![NPM Version](https://badge.fury.io/js/grid.svg)](https://npmjs.org/package/grid) [![Build Status](https://travis-ci.org/floatdrop/grid.svg)](https://travis-ci.org/floatdrop/grid) [![Dependency Status](https://gemnasium.com/floatdrop/grid.svg)](https://gemnasium.com/floatdrop/grid)
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
 
 ## Standalone server
 
@@ -37,3 +37,12 @@ Emitted, when client connects to grid with websockets and recieves id.
 ### disconnect(id)
 
 Emitted, when client closes websocket connection.
+
+[npm-url]: https://npmjs.org/package/grid
+[npm-image]: http://img.shields.io/npm/v/grid.svg
+
+[travis-url]: https://travis-ci.org/GridJS/grid
+[travis-image]: http://img.shields.io/travis/GridJS/grid.svg
+
+[depstat-url]: https://gemnasium.com/GridJS/grid
+[depstat-image]: https://gemnasium.com/GridJS/grid.svg
