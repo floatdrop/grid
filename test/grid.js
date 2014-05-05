@@ -4,7 +4,7 @@
 
 var port = 5001;
 var WS = require('ws');
-var Message = require('grid-protocol').Message;
+var Message = require('grid-protocol').Messages;
 
 require('should');
 
@@ -41,7 +41,7 @@ describe('grid', function () {
         this.grid.on('message', function () { done(); });
         var ws = new WS('ws://localhost:' + port);
         ws.on('open', function () {
-            ws.send((new Message(Message.Type.UNIVERSAL, 'user')).toBuffer());
+            ws.send((new Message('user')).toBuffer());
         });
     });
 
@@ -52,7 +52,7 @@ describe('grid', function () {
         });
         var ws = new WS('ws://localhost:' + port);
         ws.on('open', function () {
-            ws.send((new Message(Message.Type.UNIVERSAL, 'user')).toBuffer());
+            ws.send((new Message('user')).toBuffer());
         });
     });
 
@@ -60,10 +60,10 @@ describe('grid', function () {
         var ws = new WS('ws://localhost:' + port);
         ws.on('message', function (data) {
             var msg = Message.decode(data);
-            if (msg.type === Message.Type.WELCOME) {
-                ws.send((new Message(Message.Type.UNIVERSAL, msg.dest, null, 'Hello!')).toBuffer());
+            if (msg.type === 'WELCOME') {
+                ws.send((new Message(msg.id, 'Hello!')).toBuffer());
             } else {
-                msg.payload.should.eql('Hello!');
+                msg.data.should.eql('Hello!');
                 done();
             }
         });
