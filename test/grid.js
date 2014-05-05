@@ -69,28 +69,23 @@ describe('grid', function () {
         });
     });
 
-    // it('should transmit messages to other client and provide src', function (done) {
-    //     var ws = new WS('ws://localhost:' + port);
-    //     ws.on('message', function (data) {
-    //         var json = JSON.parse(data);
-    //         if (json.type === protocol.WELCOME) {
-    //             var firstId = json.id;
-    //             var ws2 = new WS('ws://localhost:' + port);
-    //             ws2.on('message', function (data) {
-    //                 var json = JSON.parse(data);
-    //                 if (json.type === protocol.WELCOME) {
-    //                     ws.send(JSON.stringify({ dst: json.id, payload: 'Hello!' }));
-    //                 } else if (json.payload) {
-    //                     json.src.should.eql(firstId);
-    //                     json.payload.should.eql('Hello!');
-    //                     done();
-    //                 }  else {
-    //                     done('Unexpected message recieved: ' + json);
-    //                 }
-    //             });
-    //         } else {
-    //             done('Unexpected message recieved: ' + json);
-    //         }
-    //     });
-    // });
+    it('should transmit messages to other client and provide src', function (done) {
+        var ws = new WS('ws://localhost:' + port);
+        ws.on('message', function (data) {
+            var m1 = Message.decode(data);
+            if (m1.type === 'WELCOME') {
+                var firstId = m1.id;
+                var ws2 = new WS('ws://localhost:' + port);
+                ws2.on('message', function (data) {
+                    var m2 = Message.decode(data);
+                    if (m2.type === 'WELCOME') {
+                        ws.send((new Message(firstId, 'Hello!')).toBuffer());
+                    }
+                });
+            } else {
+                m1.data.should.eql('Hello!');
+                done();
+            }
+        });
+    });
 });
