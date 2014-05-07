@@ -1,6 +1,8 @@
 # Grid
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
 
+Grid - is signaling server for organizing distributed network over WebRTC protocol between browsers.
+
 ## Standalone server
 
 ```js
@@ -27,16 +29,9 @@ var server = app.listen(8080);
 app.use(grid({ server: server, path: '/api' }));
 ```
 
+### API
 
-## Events
-
-### connection(id)
-
-Emitted, when client connects to grid with websockets and recieves id.
-
-### disconnect(id)
-
-Emitted, when client closes websocket connection.
+Documentation on API coming soon.
 
 [npm-url]: https://npmjs.org/package/grid
 [npm-image]: http://img.shields.io/npm/v/grid.svg
