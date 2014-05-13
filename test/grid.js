@@ -69,6 +69,39 @@ describe('grid', function () {
         });
     });
 
+    it('should broadcast connected event', function (done) {
+        var ws = new WS('ws://localhost:' + port);
+        ws.on('message', function (data) {
+            var m1 = Message.decode(data);
+            if (m1.type === 'CONNECTED') {
+                done();
+            }
+        });
+
+        var ws1 = new WS('ws://localhost:' + port);
+        ws1.on('message', function (data) {
+            var m2 = Message.decode(data);
+            if (m2.type === 'CONNECTED') {
+                done('Broadcasted to itself');
+            }
+        });
+    });
+
+    it('should broadcast disconnected event', function (done) {
+        var ws = new WS('ws://localhost:' + port);
+        ws.on('message', function (data) {
+            var m1 = Message.decode(data);
+            if (m1.type === 'DISCONNECTED') {
+                done();
+            }
+        });
+
+        var ws1 = new WS('ws://localhost:' + port);
+        ws1.on('open', function () {
+            ws1.terminate();
+        });
+    });
+
     it('should transmit messages to other client and provide src', function (done) {
         var ws = new WS('ws://localhost:' + port);
         ws.on('message', function (data) {
@@ -82,7 +115,7 @@ describe('grid', function () {
                         ws.send((new Message(firstId, 'Hello!')).toBuffer());
                     }
                 });
-            } else {
+            } else if (!m1.type) {
                 m1.data.should.eql('Hello!');
                 done();
             }
