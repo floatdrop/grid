@@ -1,6 +1,6 @@
 {
   "name": "grid",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Server for distributed networking with WebRTC",
   "keywords": [
     "WebRTC",
